@@ -3,12 +3,20 @@ var wms_layers = [];
 
         var lyr_OSMStandard_0 = new ol.layer.Tile({
             'title': 'OSM Standard',
+            'type': 'base',
             'opacity': 1.000000,
             
             
             source: new ol.source.XYZ({
             attributions: '&nbsp;&middot; <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
                 url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+            })
+        });
+        var lyr_GoogleSatellite = new ol.layer.Tile({
+    title: 'Google Satellite',
+    visible: false,
+    source: new ol.source.XYZ({
+        url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
         });
 var format_Nirmal_Drain_1 = new ol.format.GeoJSON();
@@ -57,8 +65,8 @@ var lyr_PhotoNirmal_3 = new ol.layer.Vector({
                 title: '<img src="styles/legend/PhotoNirmal_3.png" /> Photo Nirmal'
             });
 
-lyr_OSMStandard_0.setVisible(true);lyr_Nirmal_Drain_1.setVisible(true);lyr_WaterBody_2.setVisible(true);lyr_PhotoNirmal_3.setVisible(true);
-var layersList = [lyr_OSMStandard_0,lyr_Nirmal_Drain_1,lyr_WaterBody_2,lyr_PhotoNirmal_3];
+lyr_OSMStandard_0.setVisible(true);lyr_Nirmal_Drain_1.setVisible(true);lyr_WaterBody_2.setVisible(true);lyr_PhotoNirmal_3.setVisible(true);lyr_GoogleSatellite.setVisible(true);
+var layersList = [lyr_OSMStandard_0,lyr_GoogleSatellite,lyr_Nirmal_Drain_1,lyr_WaterBody_2,lyr_PhotoNirmal_3];
 lyr_Nirmal_Drain_1.set('fieldAliases', {'id': 'id', 'Num': 'Num', });
 lyr_WaterBody_2.set('fieldAliases', {'id': 'id', 'Name': 'Name', });
 lyr_PhotoNirmal_3.set('fieldAliases', {'photo': 'photo', 'filename': 'filename', 'directory': 'directory', 'altitude': 'altitude', 'direction': 'direction', 'rotation': 'rotation', 'longitude': 'longitude', 'latitude': 'latitude', 'timestamp': 'timestamp', });
